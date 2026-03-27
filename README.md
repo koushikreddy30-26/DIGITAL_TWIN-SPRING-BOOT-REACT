@@ -1,62 +1,105 @@
-# Digital Twin of Student
+# 🧠 Digital Twin Student Application
 
-A full-stack AI-powered web application that simulates a student's digital twin to track behavior, predict academic performance, and provide personalized recommendations.
+An AI-powered, full-stack Academic Tracking System designed to act as a **Digital Twin** for students. It uses Machine Learning (Linear Regression) to predict future academic performance based on study habits, attendance, and past exam scores.
 
-## Tech Stack
-- **Frontend**: React, Tailwind CSS, Recharts, Lucide React
-- **Backend**: Spring Boot 3, Spring Security, JWT, JPA
-- **Database**: MySQL 8.0
+![Dashboard Preview](frontend/src/assets/hero.png)
 
-## Features
-- **JWT Authentication**: Secure login and registration for students.
-- **Data Collection**: Track subject-wise marks, study hours, sleep, attendance, and focus levels.
-- **AI Twin Engine**: Predicts future academic scores based on behavioral patterns.
-- **Risk Assessment**: Classifies students into Low, Medium, and High-risk categories.
-- **Intelligent Recommendations**: Automatic suggestions to improve academic status.
-- **Interactive Dashboard**: Visualizes trends and proficiency using modern charts.
+## ✨ Core Features
 
-## Prerequisites
-- Java 21+
-- Maven 3.9+
-- MySQL 8.0+
-- Node.js 18+
+1. **🤖 Live ML Predictions**: Dynamically calculates predicting score and risk level using a server-side Weighted Linear Regression model.
+2. **📈 Comprehensive Analytics**: Visualizes subject-wise performance (Radar charts), study trends (Area charts), and activity history.
+3. **📊 You vs Top Students**: Compares your statistics (marks, study hours, attendance) against simulated platform averages.
+4. **🎯 Goal Tracker**: Set an academic target (e.g., 90%) and visualize progress via animated bars.
+5. **💬 AI Chatbot**: A unified AI assistant to help you understand your metrics, weak subjects, and areas of improvement (Sleep, Focus, Attendance).
+6. **🧾 PDF Export**: Generates a beautiful, downloadable PDF summary report of the student's digital twin data.
+7. **🔐 JWT Authentication**: Secure login/register flow using Spring Security and JWT tokens.
 
-## Getting Started
+---
 
-### 1. Database Setup
-Create a database named `digital_twin_db` in your MySQL server.
+## 🛠️ Technology Stack
 
-### 2. Backend Setup
-1. Navigate to the `backend` folder.
-2. Update `src/main/resources/application.properties` with your MySQL credentials (if different from koushik/123456).
-3. Run the application:
+### **Frontend** (React + Vite)
+- **Framework:** React 18, Vite
+- **Styling:** Tailwind CSS v4 (Glassmorphism, Gradients, Smooth Animations)
+- **Charts:** Recharts
+- **Icons:** Lucide-React
+- **PDF Generation:** jsPDF + html2canvas
+
+### **Backend** (Spring Boot 3)
+- **Framework:** Java 17+, Spring Boot 3.4.3
+- **Database:** MySQL 8.0
+- **Security:** Spring Security + JWT Auth
+- **ML Engine:** Custom Java Math/Linear Regression Utility
+
+---
+
+## 🚀 How to Run the Project Locally
+
+Follow these step-by-step instructions to get the application running on your local machine.
+
+### Prerequisites
+- **Java 17+** and **Maven** installed
+- **Node.js** (v18+) and **npm** installed
+- **MySQL Server** installed and running
+
+### Step 1: Database Setup
+1. Open your MySQL client (e.g., MySQL Workbench).
+2. Create a new database named `digital_twin_db`:
+   ```sql
+   CREATE DATABASE digital_twin_db;
+   ```
+3. Update the database credentials in the backend configuration file located at `backend/src/main/resources/application.properties`:
+   ```properties
+   spring.datasource.url=jdbc:mysql://localhost:3306/digital_twin_db
+   spring.datasource.username=root
+   spring.datasource.password=your_mysql_password
+   ```
+
+### Step 2: Running the Backend (Spring Boot)
+1. Open a terminal and navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+2. Build and run the Spring Boot application using Maven:
    ```bash
    mvn spring-boot:run
    ```
+3. The backend API will start on **`http://localhost:8081`**
 
-### 3. Frontend Setup
-1. Navigate to the `frontend` folder.
-2. Install dependencies:
+### Step 3: Running the Frontend (React)
+1. Open a **new/separate terminal** and navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+2. Install the required Node dependencies:
    ```bash
    npm install
    ```
-3. Start the development server:
+3. Start the Vite development server:
    ```bash
    npm run dev
    ```
-4. Open your browser at `http://localhost:5173`.
+4. The frontend will start automatically. Open your browser and go to **`http://localhost:5173`**
 
-## Digital Twin Engine (Machine Learning)
-The prediction engine uses a **Simple Linear Regression** model implemented in Java. It predicts the expected base marks by analyzing the historical relationship between `study_hours` and `performance_marks`.
+---
 
-The final prediction combines:
-1. **Regression Base** (60% weight): Trend-based projection.
-2. **Current Attendance** (30% weight): Latest recorded attendance.
-3. **Current Effort** (10% weight): Latest study hours.
+## 🧪 Testing the Application
 
-## Troubleshooting (IDE Problems)
-If you see a lot of "Cannot resolve symbol" or "Missing JDK" errors in your IDE (like VS Code):
-1. **Unbound JRE**: Ensure you have a **JDK 21 or 25** correctly configured as the project SDK in your IDE settings.
-2. **Reload Project**: Right-click on `pom.xml` and select "Add as Maven Project" or "Reload Project".
-3. **Tailwind Rules**: If CSS rules like `@tailwind` show warnings, install the "Tailwind CSS IntelliSense" extension in VS Code.
+1. **Register a New User**: Go to `http://localhost:5173/register` and create a Student account.
+2. **Add Data**: Click the "Add Data" button on the dashboard to log your first Study Activity and Subject Performance.
+3. **View Predictions**: Return to the Dashboard or navigate to the Prediction page to see your real-time risk badge and ML score calculation.
+4. **Download Report**: Click "Download Report" inside the Dashboard header to generate a PDF of your metrics.
 
+---
+
+## 💡 Machine Learning Details
+The **Prediction Engine** uses a weighted **Linear Regression** algorithm implemented entirely in Java. It analyzes:
+* `X1`: Average Past Academic Marks (Weight ~60%)
+* `X2`: Study Hours per Day (Weight ~25%)
+* `X3`: Attendance Percentage (Weight ~15%)
+
+The model projects these vectors into a final percentage score and assigns an automated Risk Level (`LOW_RISK`, `MEDIUM_RISK`, `HIGH_RISK`).
+
+---
+
+**Developed for the Digital Twin Student Project.**
