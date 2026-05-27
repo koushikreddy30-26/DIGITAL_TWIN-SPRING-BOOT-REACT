@@ -103,10 +103,17 @@ The model projects these vectors into a final percentage score and assigns an au
 ---
 
 ## ✅ Final Working Status (May 2026 Submission)
-This repository contains the **full working code** for the Digital Twin Student Application.
+This repository contains the **full working code** and **complete database state** for the Digital Twin Student Application.
 - **Backend**: Spring Boot 3.4.3 (Port 8081)
 - **Frontend**: React 18 / Vite (Port 5173)
-- **ML Engine**: Fully verified and integrated
-- **Database**: Configured for MySQL 8.0
+- **Database**: Configured for MySQL 8.0 (Includes `database_dump.sql`)
 
-**Project Finalized and Tested.**
+### 📂 Database Import
+To import the pre-populated data (subjects, marks, and analytics), run the following command in your MySQL terminal:
+```sql
+CREATE DATABASE digital_twin_db;
+USE digital_twin_db;
+SOURCE database_dump.sql;
+```
+
+**Project Finalized, Populated with Sample Data, and Tested.**
