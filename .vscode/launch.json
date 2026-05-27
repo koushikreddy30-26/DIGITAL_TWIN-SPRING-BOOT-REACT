@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Backend: Spring Boot",
+            "request": "launch",
+            "mainClass": "com.koushik.digitaltwin.StudentDigitalTwinApplication",
+            "projectName": "student-digital-twin",
+            "cwd": "${workspaceFolder}/backend",
+            "env": {
+                "SPRING_DATASOURCE_URL": "jdbc:mysql://localhost:3306/digital_twin_db",
+                "SPRING_DATASOURCE_USERNAME": "root",
+                "SPRING_DATASOURCE_PASSWORD": "1234"
+            }
+        },
+        {
+            "type": "node",
+            "name": "Frontend: Vite Dev Server",
+            "request": "launch",
+            "command": "npm run dev",
+            "cwd": "${workspaceFolder}/frontend"
+        }
+    ]
+}
